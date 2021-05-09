@@ -1,10 +1,10 @@
-name: Build
+name: On each push
 
 on: push
 
 jobs:
   composer:
-    name: Composer
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,3 +18,19 @@ jobs:
           name: wordpress
           path: wordpress
           retention-days: 5
+
+  test:
+    name: Test php compatible version
+    runs-on: ubuntu-latest
+    container:
+      image: php:7.3-fpm
+    steps:
+      - name: Download setup
+        uses: actions/download-artifact@v2
+        with:
+          name: wordpress
+      - name: Linting
+        shell: bash
+        run: |
+          cd wordpress
+          find . -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
