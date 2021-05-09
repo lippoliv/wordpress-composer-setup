@@ -9,9 +9,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install WordPress
-        run: composer install --dev --prefer-dist --no-progress --no-suggest
+        uses: php-actions/composer@v5
+        with:
+          dev: no
+          quiet: yes
+          version: 2
+          php_version: 7.3
       - name: Install dependencies
-        run: composer install --dev --prefer-dist --no-progress --no-suggest
+        uses: php-actions/composer@v5
+        with:
+          dev: no
+          quiet: yes
+          version: 2
+          php_version: 7.3
 
   test:
     name: Test php compatible version
@@ -22,9 +32,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install WordPress
-        run: composer install --dev --prefer-dist --no-progress --no-suggest
+        uses: php-actions/composer@v5
+        with:
+          dev: no
+          quiet: yes
+          version: 2
+          php_version: 7.3
       - name: Install dependencies
-        run: composer install --dev --prefer-dist --no-progress --no-suggest
+        uses: php-actions/composer@v5
+        with:
+          dev: no
+          quiet: yes
+          version: 2
+          php_version: 7.3
       - name: Linting
         shell: bash
         run: |
