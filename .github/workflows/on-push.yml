@@ -47,6 +47,9 @@ jobs:
           version: 2
           php_version: ${{ matrix.php_version }}
       - name: PHP Syntax Checker (Lint)
-        uses: StephaneBour/actions-php-lint@${{ matrix.php_version }}
+        uses: shivammathur/setup-php@v2
         with:
-          dir: './wordpress'
+          php-version: ${{ matrix.php_version }}
+      - run: |
+          cd ./wordpress
+          find . -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
