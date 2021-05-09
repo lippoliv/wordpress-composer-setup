@@ -101,7 +101,11 @@ jobs:
           host: ${{ secrets.FTPHOST }}
           src: migrate.php
           dest: migrate.php
-      - name: Run migration
+      - name: Migrate files
         uses: wei/curl@v1
         with:
           args: "https://composer-wp.trusty.codes/migrate.php"
+      - name: Migrate database
+        uses: wei/curl@v1
+        with:
+          args: "https://composer-wp.trusty.codes/wp-admin/upgrade.php?step=upgrade_db"
