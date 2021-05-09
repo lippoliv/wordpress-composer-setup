@@ -46,10 +46,11 @@ jobs:
           quiet: yes
           version: 2
           php_version: ${{ matrix.php_version }}
-      - name: PHP Syntax Checker (Lint)
+      - name: Setup PHP ${{ matrix.php_version }}
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php_version }}
-      - run: |
+      - name: Check PHP syntax
+        run: |
           cd ./wordpress
-          find . -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
+          find . -type f -name '*.php' -exec php -l {} \; | (! grep -v "5 syntax errors detected" )
