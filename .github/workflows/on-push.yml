@@ -55,3 +55,36 @@ jobs:
         run: |
           cd ./wordpress
           find . -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
+
+  deploy:
+    name: Deploy
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    environment:
+      name: composer-wp.trusty.codes
+      url: https://composer-wp.trusty.codes
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install WordPress
+        uses: php-actions/composer@v5
+        with:
+          dev: no
+          quiet: yes
+          version: 2
+          php_version: 7.3
+      - name: Install dependencies
+        uses: php-actions/composer@v5
+        with:
+          dev: no
+          quiet: yes
+          version: 2
+          php_version: 7.3
+      - name: Upload
+        uses: sebastianpopp/ftp-action@releases/v2
+        with:
+          host: ${{ secrets.FTPHOST }}
+          user: ${{ secrets.FTPUSER }}
+          password: ${{ secrets.FTPPASSWORD }}
+          localDir: "wordpress"
+          options: "--delete --asci"
