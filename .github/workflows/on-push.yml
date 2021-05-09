@@ -27,8 +27,6 @@ jobs:
     name: Test php compatible version
     needs: composer
     runs-on: ubuntu-latest
-    container:
-      image: php:7.3-fpm
     steps:
       - uses: actions/checkout@v2
       - name: Install WordPress
@@ -46,7 +44,7 @@ jobs:
           version: 2
           php_version: 7.3
       - name: Linting
-        shell: bash
+        uses: docker://php:7.3-fpm
         run: |
           cd wordpress
           find . -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
