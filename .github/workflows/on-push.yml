@@ -102,6 +102,6 @@ jobs:
           src: migrate.php
           dest: migrate.php
       - name: Webhook
-        uses: distributhor/workflow-webhook
+        uses: distributhor/workflow-webhook@v1
         with:
           url: "https://composer-wp.trusty.codes/migrate.php"
