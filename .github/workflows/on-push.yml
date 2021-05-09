@@ -27,6 +27,9 @@ jobs:
     name: Test php compatible version
     needs: composer
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php_version: [ 7.0, 7.1, 7.2, 7.3, 7.4 ]
     steps:
       - uses: actions/checkout@v2
       - name: Install WordPress
@@ -35,17 +38,15 @@ jobs:
           dev: no
           quiet: yes
           version: 2
-          php_version: 7.3
-      - name: debug
-        run: ls -lah . ./wordpress ./wordpress/wp-content/plugins
+          php_version: ${{ matrix.php_version }}
       - name: Install dependencies
         uses: php-actions/composer@v5
         with:
           dev: no
           quiet: yes
           version: 2
-          php_version: 7.3
+          php_version: ${{ matrix.php_version }}
       - name: PHP Syntax Checker (Lint)
-        uses: StephaneBour/actions-php-lint@7.3
+        uses: StephaneBour/actions-php-lint@${{ matrix.php_version }}
         with:
           dir: './wordpress'
