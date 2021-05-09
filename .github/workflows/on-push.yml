@@ -80,11 +80,16 @@ jobs:
           quiet: yes
           version: 2
           php_version: 7.3
-      - name: Upload
-        uses: sebastianpopp/ftp-action@releases/v2
+      - name: Install zip
+        uses: montudor/action-zip@v0.1.0
+      - name: Zip files
+        working-directory: wordpress
+        run: zip -qq -r ../wordpress.zip ./
+      - name: Upload zip
+        uses: bayssmekanique/action-simple-file-upload@v1
         with:
-          host: ${{ secrets.FTPHOST }}
           user: ${{ secrets.FTPUSER }}
           password: ${{ secrets.FTPPASSWORD }}
-          localDir: "wordpress"
-          options: "--delete --asci"
+          host: ${{ secrets.FTPHOST }}
+          src: wordpress.zip
+          dest: wordpress.zip
