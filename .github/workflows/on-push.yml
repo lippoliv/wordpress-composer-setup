@@ -36,6 +36,8 @@ jobs:
           quiet: yes
           version: 2
           php_version: 7.3
+      - name: debug
+        run: ls -lah . ./wordpress ./wordpress/wp-content/plugins
       - name: Install dependencies
         uses: php-actions/composer@v5
         with:
