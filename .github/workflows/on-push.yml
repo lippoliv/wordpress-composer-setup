@@ -93,3 +93,15 @@ jobs:
           host: ${{ secrets.FTPHOST }}
           src: wordpress.zip
           dest: wordpress.zip
+      - name: Upload migrator
+        uses: bayssmekanique/action-simple-file-upload@v1
+        with:
+          user: ${{ secrets.FTPUSER }}
+          password: ${{ secrets.FTPPASSWORD }}
+          host: ${{ secrets.FTPHOST }}
+          src: migrate.php
+          dest: migrate.php
+      - name: Webhook
+        uses: distributhor/workflow-webhook
+        with:
+          url: "https://composer-wp.trusty.codes/migrate.php"
