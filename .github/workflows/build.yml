@@ -1,0 +1,20 @@
+name: Build
+
+on: push
+
+jobs:
+  composer:
+    name: Composer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: composer install --dev --prefer-dist --no-progress --no-suggest
+      - name: Install dependencies
+        run: composer install --dev --prefer-dist --no-progress --no-suggest
+      - name: Archive
+        uses: actions/upload-artifact@v2
+        with:
+          name: wordpress
+          path: wordpress
+          retention-days: 5
