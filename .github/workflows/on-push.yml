@@ -8,16 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependencies
+      - name: Install WordPress
         run: composer install --dev --prefer-dist --no-progress --no-suggest
       - name: Install dependencies
         run: composer install --dev --prefer-dist --no-progress --no-suggest
-      - name: Archive
-        uses: actions/upload-artifact@v2
-        with:
-          name: wordpress
-          path: wordpress
-          retention-days: 5
 
   test:
     name: Test php compatible version
@@ -26,10 +20,11 @@ jobs:
     container:
       image: php:7.3-fpm
     steps:
-      - name: Download setup
-        uses: actions/download-artifact@v2
-        with:
-          name: wordpress
+      - uses: actions/checkout@v2
+      - name: Install WordPress
+        run: composer install --dev --prefer-dist --no-progress --no-suggest
+      - name: Install dependencies
+        run: composer install --dev --prefer-dist --no-progress --no-suggest
       - name: Linting
         shell: bash
         run: |
