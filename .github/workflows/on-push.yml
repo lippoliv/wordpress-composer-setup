@@ -43,8 +43,7 @@ jobs:
           quiet: yes
           version: 2
           php_version: 7.3
-      - name: Linting
-        uses: docker://php:7.3-fpm
-        run: |
-          cd wordpress
-          find . -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
+      - name: PHP Syntax Checker (Lint)
+        uses: StephaneBour/actions-php-lint@7.3
+        with:
+          dir: './wordpress'
