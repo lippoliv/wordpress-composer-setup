@@ -21,6 +21,7 @@ jobs:
 
   test:
     name: Test php compatible version
+    needs: composer
     runs-on: ubuntu-latest
     container:
       image: php:7.3-fpm
