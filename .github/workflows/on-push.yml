@@ -79,7 +79,7 @@ jobs:
           src: wordpress.zip
           dest: wordpress.zip
       - name: Upload migrator
-        uses: bayssmekanique/action-simple-file-upload@v1
+        uses: bayssmekanique/action-simple-file-upload@v1.1.3
         with:
           user: ${{ secrets.FTPUSER }}
           password: ${{ secrets.FTPPASSWORD }}
