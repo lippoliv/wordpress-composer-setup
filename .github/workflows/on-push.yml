@@ -26,7 +26,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: wordpress
-          key: ${{ env.GITHUB_SHA }}
+          key: $GITHUB_SHA
 
   test:
     name: Test php compatible version
@@ -41,7 +41,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: wordpress
-          key: ${{ env.GITHUB_SHA }}
+          key: $GITHUB_SHA
       - name: Setup PHP ${{ matrix.php_version }}
         uses: shivammathur/setup-php@v2
         with:
@@ -64,7 +64,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: wordpress
-          key: ${{ env.GITHUB_SHA }}
+          key: $GITHUB_SHA
       - name: Install zip
         uses: montudor/action-zip@v0.1.0
       - name: Zip files
