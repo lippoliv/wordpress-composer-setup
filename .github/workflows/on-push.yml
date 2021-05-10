@@ -22,6 +22,11 @@ jobs:
           quiet: yes
           version: 2
           php_version: 7.3
+      - name: Cache setup
+        uses: actions/cache@v2
+        with:
+          path: wordpress
+          key: ${{ env.GITHUB_SHA }}
 
   test:
     name: Test php compatible version
@@ -32,21 +37,11 @@ jobs:
       matrix:
         php_version: [ 7.0, 7.1, 7.2, 7.3, 7.4 ]
     steps:
-      - uses: actions/checkout@v2
-      - name: Install WordPress
-        uses: php-actions/composer@v5
+      - name: Restore cache
+        uses: actions/cache@v2
         with:
-          dev: no
-          quiet: yes
-          version: 2
-          php_version: ${{ matrix.php_version }}
-      - name: Install dependencies
-        uses: php-actions/composer@v5
-        with:
-          dev: no
-          quiet: yes
-          version: 2
-          php_version: ${{ matrix.php_version }}
+          path: wordpress
+          key: ${{ env.GITHUB_SHA }}
       - name: Setup PHP ${{ matrix.php_version }}
         uses: shivammathur/setup-php@v2
         with:
@@ -65,21 +60,11 @@ jobs:
       name: composer-wp.trusty.codes
       url: https://composer-wp.trusty.codes
     steps:
-      - uses: actions/checkout@v2
-      - name: Install WordPress
-        uses: php-actions/composer@v5
+      - name: Restore cache
+        uses: actions/cache@v2
         with:
-          dev: no
-          quiet: yes
-          version: 2
-          php_version: 7.3
-      - name: Install dependencies
-        uses: php-actions/composer@v5
-        with:
-          dev: no
-          quiet: yes
-          version: 2
-          php_version: 7.3
+          path: wordpress
+          key: ${{ env.GITHUB_SHA }}
       - name: Install zip
         uses: montudor/action-zip@v0.1.0
       - name: Zip files
