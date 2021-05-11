@@ -25,7 +25,9 @@ jobs:
       - name: Cache setup
         uses: actions/cache@v2
         with:
-          path: wordpress
+          path: |
+            ./wordpress
+            migrate.php
           key: $GITHUB_SHA
 
   test:
@@ -48,6 +50,7 @@ jobs:
           php-version: ${{ matrix.php_version }}
       - name: Check PHP syntax
         run: |
+          php -l migrate.php | (! grep -v "No syntax errors detected" )
           cd ./wordpress
           find . -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
 
