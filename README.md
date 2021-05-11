@@ -15,6 +15,10 @@ Since we now have a specific description for our dependencies, why not using CI/
 
 [Run empty installation](doc/install-new.md)
 
+## How does environment migration work?
+
+[How does environment migration work?](doc/environment-migration.md)
+
 ## Why run `composer install` twice?
 
 [Why run `composer install` twice?](doc/run-composer-install-twice.md)
