@@ -71,6 +71,7 @@ jobs:
           mv wp-content/muplugins wp-content/muplugins-new
           mv wp-content/plugins wp-content/plugins-new
           mv wp-content/themes wp-content/themes-new
+          ls -lah .. wp-content/
       - name: Install zip
         uses: montudor/action-zip@v0.1.0
       - name: Zip files
