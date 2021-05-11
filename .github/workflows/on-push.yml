@@ -65,6 +65,13 @@ jobs:
         with:
           path: wordpress
           key: $GITHUB_SHA
+      - name: Rename folders
+        working-directory: wordpress
+        run: |
+          [ -d wp-content/muplugins] || mkdir wp-content/muplugins
+          mv wp-content/muplugins wp-content/muplugins-new
+          mv wp-content/plugins wp-content/plugins-new
+          mv wp-content/themes wp-content/themes-new
       - name: Install zip
         uses: montudor/action-zip@v0.1.0
       - name: Zip files
