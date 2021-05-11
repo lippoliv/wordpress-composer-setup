@@ -34,7 +34,6 @@ jobs:
     name: Test php compatible version
     needs: composer
     runs-on: ubuntu-latest
-    continue-on-error: true
     strategy:
       matrix:
         php_version: [ 7.0, 7.1, 7.2, 7.3, 7.4 ]
@@ -49,10 +48,7 @@ jobs:
         with:
           php-version: ${{ matrix.php_version }}
       - name: Check PHP syntax
-        run: |
-          php -l migrate.php | (! grep -v "No syntax errors detected" )
-          cd ./wordpress
-          find . -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
+        run: find . -type f -name '*.php' -exec php -l {} \; | (! grep -v "No syntax errors detected" )
 
   deploy:
     name: Deploy
