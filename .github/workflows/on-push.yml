@@ -26,7 +26,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            ./wordpress
+            wordpress
             migrate.php
           key: $GITHUB_SHA
 
@@ -41,7 +41,9 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v2
         with:
-          path: wordpress
+          path: |
+            wordpress
+            migrate.php
           key: $GITHUB_SHA
       - name: Setup PHP ${{ matrix.php_version }}
         uses: shivammathur/setup-php@v2
@@ -62,7 +64,9 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v2
         with:
-          path: wordpress
+          path: |
+            wordpress
+            migrate.php
           key: $GITHUB_SHA
       - name: Rename folders
         working-directory: wordpress
@@ -71,7 +75,6 @@ jobs:
           mv wp-content/muplugins wp-content/muplugins-new
           mv wp-content/plugins wp-content/plugins-new
           mv wp-content/themes wp-content/themes-new
-          ls -lah .. wp-content/
       - name: Install zip
         uses: montudor/action-zip@v0.1.0
       - name: Zip files
