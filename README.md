@@ -13,16 +13,8 @@ Since we now have a specific description for our dependencies, why not using CI/
 
 ## Run empty installation
 
-1. RUN `composer install`
-1. RUN `composer install` again
+[Run empty installation](doc/install-new.md)
 
 ## Why run `composer install` twice?
 
-We cannot influence the order of composer installations. Composer is advised to install WordPress to `wordpress` folder.
-Whenever there is an update, the `wordpress` folder will be deleted, and a new copy will be put into that folder. All
-Plugins / Themes / ... is now gone.
-
-On the second run, nothing changed for WordPress and composer recognizes, that the Plugins and Themes are missing. So
-those will be installed.
-
-Should probably be optimized in the future somehow.
+[Why run `composer install` twice?](doc/run-composer-install-twice.md)
