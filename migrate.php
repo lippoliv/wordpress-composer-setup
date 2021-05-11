@@ -12,17 +12,17 @@
         $name,
         $prefix = 'wp-content'
     ) {
-        $orgDir = "$prefix/$name";
+        $targetDirectoryPath = "$prefix/$name";
+        $newDirectoryPath    = "$targetDirectoryPath-new";
 
-        $oldDir = "$orgDir-old";
-        $newDir = "$orgDir-new";
+        if (is_dir($targetDirectoryPath)) {
+            passthru("rm -rf $targetDirectoryPath");
+        }
 
-        rename($orgDir, $oldDir);
-        rename($newDir, $orgDir);
-        passthru("rm -rf $oldDir");
+        rename($newDirectoryPath, $targetDirectoryPath);
     }
 
-    $responseCode = 400;
+    $responseCode = 500;
     startMaintenanceMode();
 
     $zipArchive = new ZipArchive();
