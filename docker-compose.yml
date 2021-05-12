@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  wordpress:
+    build: .
+    ports:
+      - 80:80
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: exampledb
+    volumes:
+      - ./uploads:/var/www/html/wp-content/uploads
+
+  db:
+    image: mysql:5.7.34
+    environment:
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    ports:
+      - 3306:3306
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d

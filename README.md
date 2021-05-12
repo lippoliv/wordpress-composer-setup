@@ -11,9 +11,9 @@ shows how to add some private stuff (e.g. paid plugins and custom implementation
 
 Since we now have a specific description for our dependencies, why not using CI/CD to build and deploy for each change?
 
-## Run empty installation
+## Run docker installation
 
-[Run empty installation](doc/install-new.md)
+[Run docker installation](doc/install-new.md)
 
 ## How does environment migration work?
 
