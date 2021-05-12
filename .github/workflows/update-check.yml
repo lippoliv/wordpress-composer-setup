@@ -1,0 +1,35 @@
+name: Update check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 5 * * 1
+
+jobs:
+  composer:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      php_version: 7.3
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install WordPress
+        uses: php-actions/composer@v5
+        with:
+          dev: no
+          quiet: yes
+          version: 2
+          php_version: ${{ env.php_version }}
+      - name: Install dependencies
+        uses: php-actions/composer@v5
+        with:
+          dev: no
+          quiet: yes
+          version: 2
+          php_version: ${{ env.php_version }}
+      - name: Setup PHP ${{ env.php_version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.php_version }}
+      - name: Check for updates
+        run: composer outdated
