@@ -50,6 +50,7 @@ jobs:
           git branch ${{ env.update_branch_name }}
           git checkout -f ${{ env.update_branch_name }}
 
+          git status
           git commit -am "composer update\n\n${{ steps.changes.outputs.message }}"
           git push --set-upstream origin ${{ env.update_branch_name }}
       - name: Create pull request
