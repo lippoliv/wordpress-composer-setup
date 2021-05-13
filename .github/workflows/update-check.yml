@@ -15,25 +15,16 @@ jobs:
       php_version: 7.3
     steps:
       - uses: actions/checkout@v2
-      - name: Install WordPress
-        uses: php-actions/composer@v5
-        with:
-          quiet: yes
-          version: 2
-          php_version: ${{ env.php_version }}
-      - name: Install dependencies
-        uses: php-actions/composer@v5
-        with:
-          quiet: yes
-          version: 2
-          php_version: ${{ env.php_version }}
       - name: Setup PHP ${{ env.php_version }}
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ env.php_version }}
+      - name: Install
+        run: |
+          composer install
+          composer install
       - name: Check for updates
         id: update
-        shell: bash
         run: |
           changes=$(composer outdated)
 
@@ -49,7 +40,6 @@ jobs:
           composer update
       - name: Push update
         if: steps.update.outputs.message
-        shell: bash
         run: |
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config --global user.name "$GITHUB_ACTOR"
