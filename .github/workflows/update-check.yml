@@ -51,7 +51,7 @@ jobs:
           git push origin --delete ${{ env.update_branch_name }} || true
           git branch -D ${{ env.update_branch_name }} || true
           git fetch
-          git checkout -b -f ${{ env.update_branch_name }}
+          git checkout -b ${{ env.update_branch_name }}
 
           git status
           git commit -a -m "composer update\n\n${{ steps.changes.outputs.message }}"
