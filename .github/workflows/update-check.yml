@@ -53,8 +53,7 @@ jobs:
           git fetch
           git checkout -b ${{ env.update_branch_name }}
 
-          git status
-          git commit -a -m "composer update\n\n${{ steps.changes.outputs.message }}"
+          git commit -a -m "composer update" -m "${{ steps.update.outputs.message }}"
           git push --set-upstream origin ${{ env.update_branch_name }}
       - name: Create pull request
         if: steps.update.outputs.message
@@ -64,7 +63,7 @@ jobs:
                --header 'content-type: application/json' \
                --data '{
                    "title": "Bugfix update",
-                   "body": "${{ steps.changes.outputs.message }}",
+                   "body": "${{ steps.update.outputs.message }}",
                    "head":"${{ env.update_branch_name }}",
                    "base":"${{ env.base_branch_name }}"
                }' \
