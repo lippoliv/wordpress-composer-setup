@@ -48,4 +48,4 @@ jobs:
           git branch updates
 
           git commit -am "composer update\n\n${{ steps.changes.outputs.message }}"
-          # git push --set-upstream origin updates
+          git push --set-upstream origin updates
