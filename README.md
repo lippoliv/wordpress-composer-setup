@@ -11,6 +11,11 @@ shows how to add some private stuff (e.g. paid plugins and custom implementation
 
 Since we now have a specific description for our dependencies, why not using CI/CD to build and deploy for each change?
 
+## Check for updates
+
+There is a pipeline checking each monday 5am for available updates. If updates are found, a pull request will be
+created. For pull requests to master, the usual pipeline starts and runs several checks.
+
 ## Run docker installation
 
 [Run docker installation](doc/install-new.md)
