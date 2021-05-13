@@ -1,4 +1,4 @@
-name: Update check
+name: Update
 
 on:
   push:
@@ -8,7 +8,8 @@ on:
 
 jobs:
   composer:
-    name: Build
+    name: Update
+    if: github.ref == 'refs/heads/check-for-updates'
     runs-on: ubuntu-latest
     env:
       php_version: 7.3
@@ -33,4 +34,22 @@ jobs:
         with:
           php-version: ${{ env.php_version }}
       - name: Check for updates
-        run: composer outdated
+        id: update
+        shell: bash
+        run: |
+          changes=$(composer outdated)
+
+          # Exit if nothing changed
+          [[ -z $changes ]] && exit 0 || true
+
+          echo $changes
+          echo ::set-output name=message::$changes
+      - name: Push update
+        if: steps.update.outputs.message
+        shell: bash
+        run: |
+          git branch -D updates
+          git branch updates
+
+          git commit -m "composer update\n\n${{ steps.changes.outputs.message }}"
+          # git push --set-upstream origin updates
