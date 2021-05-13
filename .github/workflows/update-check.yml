@@ -1,0 +1,68 @@
+name: Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 5 * * 1
+
+jobs:
+  composer:
+    name: Update
+    runs-on: ubuntu-latest
+    env:
+      php_version: 7.3
+      base_branch_name: master
+      update_branch_name: updates
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: '${{ env.base_branch_name }}'
+      - name: Setup PHP ${{ env.php_version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.php_version }}
+      - name: Install
+        run: |
+          composer install
+          composer install
+      - name: Check for updates
+        id: update
+        run: |
+          changes=$(composer outdated)
+
+          # Exit if nothing changed
+          [[ -z $changes ]] && exit 0 || true
+
+          echo $changes
+          echo ::set-output name=message::$changes
+      - name: Update
+        if: steps.update.outputs.message
+        run: |
+          composer update
+          composer update
+      - name: Push update
+        if: steps.update.outputs.message
+        run: |
+          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --global user.name "$GITHUB_ACTOR"
+
+          git push origin --delete ${{ env.update_branch_name }} || true
+          git branch -D ${{ env.update_branch_name }} || true
+          git fetch
+          git checkout -b ${{ env.update_branch_name }}
+
+          git commit -a -m "composer update" -m "${{ steps.update.outputs.message }}"
+          git push --set-upstream origin ${{ env.update_branch_name }}
+      - name: Create pull request
+        if: steps.update.outputs.message
+        run: |
+          curl --request POST \
+               --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+               --header 'content-type: application/json' \
+               --data '{
+                   "title": "Bugfix update",
+                   "body": "${{ steps.update.outputs.message }}",
+                   "head":"${{ env.update_branch_name }}",
+                   "base":"${{ env.base_branch_name }}"
+               }' \
+               --url https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls
