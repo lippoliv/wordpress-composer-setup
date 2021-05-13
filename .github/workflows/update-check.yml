@@ -18,14 +18,12 @@ jobs:
       - name: Install WordPress
         uses: php-actions/composer@v5
         with:
-          dev: no
           quiet: yes
           version: 2
           php_version: ${{ env.php_version }}
       - name: Install dependencies
         uses: php-actions/composer@v5
         with:
-          dev: no
           quiet: yes
           version: 2
           php_version: ${{ env.php_version }}
