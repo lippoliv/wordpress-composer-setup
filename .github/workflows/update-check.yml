@@ -47,5 +47,5 @@ jobs:
           git branch -D updates || true
           git branch updates
 
-          git commit -m "composer update\n\n${{ steps.changes.outputs.message }}"
+          git commit -am "composer update\n\n${{ steps.changes.outputs.message }}"
           # git push --set-upstream origin updates
