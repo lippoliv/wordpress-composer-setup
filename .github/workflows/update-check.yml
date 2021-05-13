@@ -44,6 +44,24 @@ jobs:
 
           echo $changes
           echo ::set-output name=message::$changes
+      - name: Update WordPress
+        if: steps.update.outputs.message
+        uses: php-actions/composer@v5
+        with:
+          command: update
+          dev: no
+          quiet: yes
+          version: 2
+          php_version: ${{ env.php_version }}
+      - name: Update dependencies
+        if: steps.update.outputs.message
+        uses: php-actions/composer@v5
+        with:
+          command: update
+          dev: no
+          quiet: yes
+          version: 2
+          php_version: ${{ env.php_version }}
       - name: Push update
         if: steps.update.outputs.message
         shell: bash
