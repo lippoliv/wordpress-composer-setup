@@ -16,6 +16,8 @@ jobs:
       update_branch_name: updates
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: 'master'
       - name: Setup PHP ${{ env.php_version }}
         uses: shivammathur/setup-php@v2
         with:
@@ -48,9 +50,7 @@ jobs:
           git push origin --delete ${{ env.update_branch_name }} || true
           git branch -D ${{ env.update_branch_name }} || true
           git fetch
-          git checkout -f master
-          git branch ${{ env.update_branch_name }}
-          git checkout -f ${{ env.update_branch_name }}
+          git checkout -b -f ${{ env.update_branch_name }}
 
           git status
           git commit -a -m "composer update\n\n${{ steps.changes.outputs.message }}"
