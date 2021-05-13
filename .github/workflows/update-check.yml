@@ -1,7 +1,6 @@
 name: Update
 
 on:
-  push:
   workflow_dispatch:
   schedule:
     - cron: 0 5 * * 1
@@ -9,7 +8,6 @@ on:
 jobs:
   composer:
     name: Update
-    if: github.ref == 'refs/heads/check-for-updates'
     runs-on: ubuntu-latest
     env:
       php_version: 7.3
