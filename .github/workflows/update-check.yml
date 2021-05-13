@@ -47,6 +47,7 @@ jobs:
 
           git push origin --delete ${{ env.update_branch_name }} || true
           git branch -D ${{ env.update_branch_name }} || true
+          git fetch
           git checkout -f master
           git branch ${{ env.update_branch_name }}
           git checkout -f ${{ env.update_branch_name }}
