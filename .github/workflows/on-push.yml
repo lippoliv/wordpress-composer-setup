@@ -75,8 +75,8 @@ jobs:
       - name: Rename folders
         working-directory: wordpress
         run: |
-          [ -d wp-content/muplugins] || mkdir wp-content/muplugins
-          mv wp-content/muplugins wp-content/muplugins-new
+          [ -d wp-content/mu-plugins] || mkdir wp-content/mu-plugins
+          mv wp-content/mu-plugins wp-content/mu-plugins-new
           mv wp-content/plugins wp-content/plugins-new
           mv wp-content/themes wp-content/themes-new
       - name: Install zip

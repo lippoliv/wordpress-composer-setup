@@ -30,7 +30,7 @@
         $zipArchive->extractTo('.');
         $zipArchive->close();
 
-        replaceFolder('muplugins');
+        replaceFolder('mu-plugins');
         replaceFolder('plugins');
         replaceFolder('themes');
 
