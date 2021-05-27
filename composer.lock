@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0915ad2ce4425351576bc5f0e588f8d5",
+    "content-hash": "758bf6deaeb7234efdcaa8f2428bac1d",
     "packages": [
         {
             "name": "composer/installers",
@@ -296,15 +296,15 @@
         },
         {
             "name": "wpackagist-plugin/wordfence",
-            "version": "7.5.2",
+            "version": "7.5.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordfence/",
-                "reference": "tags/7.5.2"
+                "reference": "tags/7.5.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordfence.7.5.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordfence.7.5.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -351,10 +351,6 @@
             ],
             "description": "A PHP search replace tool for quickly modifying a string throughout a database. Useful for changing the base URL when migrating a WordPress site from development to production.",
             "homepage": "https://github.com/interconnectit/Search-Replace-DB",
-            "support": {
-                "issues": "https://github.com/interconnectit/Search-Replace-DB/issues",
-                "source": "https://github.com/interconnectit/Search-Replace-DB/tree/4.1.2"
-            },
             "time": "2020-05-12T08:39:39+00:00"
         }
     ],
