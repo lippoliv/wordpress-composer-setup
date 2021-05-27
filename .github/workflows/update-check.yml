@@ -23,8 +23,8 @@ jobs:
           php-version: ${{ env.php_version }}
       - name: Install
         run: |
-          composer install
-          composer install
+          composer install --ignore-platform-reqs
+          composer install --ignore-platform-reqs
       - name: Check for updates
         id: update
         run: |
@@ -38,8 +38,8 @@ jobs:
       - name: Update
         if: steps.update.outputs.message
         run: |
-          composer update
-          composer update
+          composer update --ignore-platform-reqs
+          composer update --ignore-platform-reqs
       - name: Push update
         if: steps.update.outputs.message
         run: |

@@ -19,6 +19,7 @@ jobs:
           quiet: no
           version: 2
           php_version: 7.3
+          args: --ignore-platform-reqs
       - name: Install dependencies
         uses: php-actions/composer@v5
         with:
@@ -26,6 +27,7 @@ jobs:
           quiet: no
           version: 2
           php_version: 7.3
+          args: --ignore-platform-reqs
       - name: Cache setup
         uses: actions/cache@v2
         with:
