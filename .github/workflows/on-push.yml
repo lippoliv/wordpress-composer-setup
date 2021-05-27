@@ -82,6 +82,12 @@ jobs:
           mv wp-content/mu-plugins wp-content/mu-plugins-new
           mv wp-content/plugins wp-content/plugins-new
           mv wp-content/themes wp-content/themes-new
+      - name: Show deployment
+        working-directory: wordpress/wp-content
+        run: |
+          ls -lah mu-plugins-new/*
+          ls -lah wp-content/plugins-new/*
+          ls -lah wp-content/themes-new/*
       - name: Install zip
         uses: montudor/action-zip@v0.1.0
       - name: Zip files
