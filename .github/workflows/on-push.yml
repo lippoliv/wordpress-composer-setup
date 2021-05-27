@@ -1,6 +1,7 @@
 name: On each push
 
 on:
+  workflow_dispatch:
   push:
   pull_request:
     branches:
@@ -34,7 +35,7 @@ jobs:
           path: |
             wordpress
             migrate.php
-          key: $GITHUB_SHA
+          key: $GITHUB_SHA-$GITHUB_RUN_NUMBER
 
   test:
     name: Test php compatible version
@@ -50,7 +51,7 @@ jobs:
           path: |
             wordpress
             migrate.php
-          key: $GITHUB_SHA
+          key: $GITHUB_SHA-$GITHUB_RUN_NUMBER
       - name: Setup PHP ${{ matrix.php_version }}
         uses: shivammathur/setup-php@v2
         with:
@@ -73,7 +74,7 @@ jobs:
           path: |
             wordpress
             migrate.php
-          key: $GITHUB_SHA
+          key: $GITHUB_SHA-$GITHUB_RUN_NUMBER
       - name: Rename folders
         working-directory: wordpress
         run: |
