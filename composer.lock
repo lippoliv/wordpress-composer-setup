@@ -1,20 +1,20 @@
 {
-    "_readme": [
+    "_readme":      [
         "This file locks the dependencies of your project to a known state",
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "758bf6deaeb7234efdcaa8f2428bac1d",
-    "packages": [
+    "content-hash": "10b1a585904d38be83f7b38a0c8c64b1",
+    "packages":     [
         {
-            "name": "composer/installers",
+            "name":    "composer/installers",
             "version": "v1.11.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/composer/installers.git",
+            "source":  {
+                "type":      "git",
+                "url":       "https://github.com/composer/installers.git",
                 "reference": "ae03311f45dfe194412081526be2e003960df74b"
             },
-            "dist": {
+            "dist":    {
                 "type": "zip",
                 "url": "https://api.github.com/repos/composer/installers/zipball/ae03311f45dfe194412081526be2e003960df74b",
                 "reference": "ae03311f45dfe194412081526be2e003960df74b",
@@ -277,14 +277,32 @@
             "time": "2020-04-16T21:44:57+00:00"
         },
         {
-            "name": "wpackagist-plugin/litespeed-cache",
-            "version": "3.6.4",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/litespeed-cache/",
+            "name":     "wpackagist-plugin/disable-wordpress-updates",
+            "version":  "1.6.7",
+            "source":   {
+                "type":      "svn",
+                "url":       "https://plugins.svn.wordpress.org/disable-wordpress-updates/",
+                "reference": "tags/1.6.7"
+            },
+            "dist":     {
+                "type": "zip",
+                "url":  "https://downloads.wordpress.org/plugin/disable-wordpress-updates.1.6.7.zip"
+            },
+            "require":  {
+                "composer/installers": "~1.0"
+            },
+            "type":     "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/disable-wordpress-updates/"
+        },
+        {
+            "name":     "wpackagist-plugin/litespeed-cache",
+            "version":  "3.6.4",
+            "source":   {
+                "type":      "svn",
+                "url":       "https://plugins.svn.wordpress.org/litespeed-cache/",
                 "reference": "tags/3.6.4"
             },
-            "dist": {
+            "dist":     {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/litespeed-cache.3.6.4.zip"
             },
