@@ -85,6 +85,7 @@ jobs:
       - name: Show deployment
         working-directory: wordpress/wp-content
         run: |
+          echo $GITHUB_SHA-$GITHUB_RUN_NUMBER
           ls -lah mu-plugins-new/
           ls -lah plugins-new/
           ls -lah themes-new/
