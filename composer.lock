@@ -1,20 +1,20 @@
 {
-    "_readme":      [
+    "_readme": [
         "This file locks the dependencies of your project to a known state",
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "10b1a585904d38be83f7b38a0c8c64b1",
-    "packages":     [
+    "packages": [
         {
-            "name":    "composer/installers",
+            "name": "composer/installers",
             "version": "v1.11.0",
-            "source":  {
-                "type":      "git",
-                "url":       "https://github.com/composer/installers.git",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
                 "reference": "ae03311f45dfe194412081526be2e003960df74b"
             },
-            "dist":    {
+            "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/composer/installers/zipball/ae03311f45dfe194412081526be2e003960df74b",
                 "reference": "ae03311f45dfe194412081526be2e003960df74b",
@@ -140,24 +140,38 @@
                 "issues": "https://github.com/composer/installers/issues",
                 "source": "https://github.com/composer/installers/tree/v1.11.0"
             },
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2021-04-28T06:42:17+00:00"
         },
         {
             "name": "johnpbloch/wordpress",
-            "version": "5.7.1",
+            "version": "5.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress.git",
-                "reference": "921c59df22d69339d1a8135b9463791b8431b007"
+                "reference": "be44aeabc63a584a4b1ef4a193f36c3f710a162a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/921c59df22d69339d1a8135b9463791b8431b007",
-                "reference": "921c59df22d69339d1a8135b9463791b8431b007",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress/zipball/be44aeabc63a584a4b1ef4a193f36c3f710a162a",
+                "reference": "be44aeabc63a584a4b1ef4a193f36c3f710a162a",
                 "shasum": ""
             },
             "require": {
-                "johnpbloch/wordpress-core": "5.7.1",
+                "johnpbloch/wordpress-core": "5.7.2",
                 "johnpbloch/wordpress-core-installer": "^1.0 || ^2.0",
                 "php": ">=5.6.20"
             },
@@ -179,20 +193,27 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2021-04-15T02:15:53+00:00"
+            "support": {
+                "forum": "http://wordpress.org/support/",
+                "irc": "irc://irc.freenode.net/wordpress",
+                "issues": "http://core.trac.wordpress.org/",
+                "source": "http://core.trac.wordpress.org/browser",
+                "wiki": "http://codex.wordpress.org/"
+            },
+            "time": "2021-05-13T00:40:29+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
-            "version": "5.7.1",
+            "version": "5.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "4d368c02f3e842b446c867589656382f95c6ac58"
+                "reference": "d0f5bdeb81800b6bcefee723ebf928b5677e2e86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/4d368c02f3e842b446c867589656382f95c6ac58",
-                "reference": "4d368c02f3e842b446c867589656382f95c6ac58",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/d0f5bdeb81800b6bcefee723ebf928b5677e2e86",
+                "reference": "d0f5bdeb81800b6bcefee723ebf928b5677e2e86",
                 "shasum": ""
             },
             "require": {
@@ -200,7 +221,7 @@
                 "php": ">=5.6.20"
             },
             "provide": {
-                "wordpress/core-implementation": "5.7.1"
+                "wordpress/core-implementation": "5.7.2"
             },
             "type": "wordpress-core",
             "notification-url": "https://packagist.org/downloads/",
@@ -220,7 +241,14 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2021-04-15T02:15:49+00:00"
+            "support": {
+                "forum": "https://wordpress.org/support/",
+                "irc": "irc://irc.freenode.net/wordpress",
+                "issues": "https://core.trac.wordpress.org/",
+                "source": "https://core.trac.wordpress.org/browser",
+                "wiki": "https://codex.wordpress.org/"
+            },
+            "time": "2021-05-13T00:40:25+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core-installer",
@@ -277,32 +305,32 @@
             "time": "2020-04-16T21:44:57+00:00"
         },
         {
-            "name":     "wpackagist-plugin/disable-wordpress-updates",
-            "version":  "1.6.7",
-            "source":   {
-                "type":      "svn",
-                "url":       "https://plugins.svn.wordpress.org/disable-wordpress-updates/",
+            "name": "wpackagist-plugin/disable-wordpress-updates",
+            "version": "1.6.7",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/disable-wordpress-updates/",
                 "reference": "tags/1.6.7"
             },
-            "dist":     {
+            "dist": {
                 "type": "zip",
-                "url":  "https://downloads.wordpress.org/plugin/disable-wordpress-updates.1.6.7.zip"
+                "url": "https://downloads.wordpress.org/plugin/disable-wordpress-updates.1.6.7.zip"
             },
-            "require":  {
+            "require": {
                 "composer/installers": "~1.0"
             },
-            "type":     "wordpress-plugin",
+            "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/disable-wordpress-updates/"
         },
         {
-            "name":     "wpackagist-plugin/litespeed-cache",
-            "version":  "3.6.4",
-            "source":   {
-                "type":      "svn",
-                "url":       "https://plugins.svn.wordpress.org/litespeed-cache/",
+            "name": "wpackagist-plugin/litespeed-cache",
+            "version": "3.6.4",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/litespeed-cache/",
                 "reference": "tags/3.6.4"
             },
-            "dist":     {
+            "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/litespeed-cache.3.6.4.zip"
             },
@@ -314,15 +342,15 @@
         },
         {
             "name": "wpackagist-plugin/wordfence",
-            "version": "7.5.1",
+            "version": "7.5.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wordfence/",
-                "reference": "tags/7.5.1"
+                "reference": "tags/7.5.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wordfence.7.5.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/wordfence.7.5.3.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -369,6 +397,10 @@
             ],
             "description": "A PHP search replace tool for quickly modifying a string throughout a database. Useful for changing the base URL when migrating a WordPress site from development to production.",
             "homepage": "https://github.com/interconnectit/Search-Replace-DB",
+            "support": {
+                "issues": "https://github.com/interconnectit/Search-Replace-DB/issues",
+                "source": "https://github.com/interconnectit/Search-Replace-DB/tree/4.1.2"
+            },
             "time": "2020-05-12T08:39:39+00:00"
         }
     ],
@@ -381,5 +413,6 @@
         "php": "7.0.*|7.1.*|7.2.*|7.3.*|7.4.*",
         "ext-zip": "*"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }
