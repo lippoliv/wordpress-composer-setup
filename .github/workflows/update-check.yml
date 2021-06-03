@@ -56,7 +56,7 @@ jobs:
         if: steps.update.outputs.message
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.PAT }}
+          github_token: ${{ secrets.TOKEN }}
           branch: ${{ env.update_branch_name }}
       - name: Create pull request
         if: steps.update.outputs.message
