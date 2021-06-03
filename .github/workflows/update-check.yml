@@ -52,7 +52,12 @@ jobs:
           git checkout -b ${{ env.update_branch_name }}
 
           git commit -a -m "composer update" -m "${{ steps.update.outputs.message }}"
-          git push --set-upstream origin ${{ env.update_branch_name }}
+      - name: Push changes
+        if: steps.update.outputs.message
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT }}
+          branch: ${{ env.update_branch_name }}
       - name: Create pull request
         if: steps.update.outputs.message
         run: |
