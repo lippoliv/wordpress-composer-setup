@@ -12,7 +12,7 @@ jobs:
     env:
       php_version: 7.3
       base_branch_name: master
-      update_branch_name: updates
+      update_branch_name: auto-updates
     steps:
       - uses: actions/checkout@v2
         with:
@@ -65,7 +65,7 @@ jobs:
                --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
                --header 'content-type: application/json' \
                --data '{
-                   "title": "Bugfix update",
+                   "title": "Auto updates",
                    "body": "${{ steps.update.outputs.message }}",
                    "head":"${{ env.update_branch_name }}",
                    "base":"${{ env.base_branch_name }}"
