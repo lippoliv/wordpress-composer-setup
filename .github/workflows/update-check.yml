@@ -41,24 +41,20 @@ jobs:
         run: |
           composer update --ignore-platform-reqs
           composer update --ignore-platform-reqs
+      - uses: oleksiyrudenko/gha-git-credentials@v2.1
+        if: steps.update.outputs.message
+        with:
+          token: ${{ secrets.TOKEN }}
       - name: Push update
         if: steps.update.outputs.message
         run: |
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git config --global user.name "$GITHUB_ACTOR"
-
           git push origin --delete ${{ env.update_branch_name }} || true
           git branch -D ${{ env.update_branch_name }} || true
           git fetch
           git checkout -b ${{ env.update_branch_name }}
 
           git commit -a -m "composer update" -m "${{ steps.update.outputs.message }}"
-      - name: Push changes
-        if: steps.update.outputs.message
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.TOKEN }}
-          branch: ${{ env.update_branch_name }}
+          git push --set-upstream origin ${{ env.update_branch_name }}
       - name: Create pull request
         if: steps.update.outputs.message
         run: |
