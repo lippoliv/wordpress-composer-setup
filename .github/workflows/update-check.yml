@@ -44,6 +44,9 @@ jobs:
       - uses: oleksiyrudenko/gha-git-credentials@v2.1
         if: steps.update.outputs.message
         with:
+          name: ${{ secrets.GIT_NAME }}
+          email: ${{ secrets.GIT_EMAIL }}
+          actor: ${{ secrets.GIT_ACTOR }}
           token: ${{ secrets.TOKEN }}
       - name: Push update
         if: steps.update.outputs.message
