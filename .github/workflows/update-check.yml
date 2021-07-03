@@ -29,7 +29,8 @@ jobs:
       - name: Check for updates
         id: update
         run: |
-          changes=$(composer outdated)
+          composer update --dry-run --no-ansi &> composer.log
+          changes=$(cat composer.log)
 
           # Exit if nothing changed
           [[ -z $changes ]] && exit 0 || true
